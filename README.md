@@ -1,6 +1,8 @@
 # RaspberryPi_Web_Remote_Control_GUI
  Remotely control the GPIO pins on Raspberry Pi via a web interface
 
+<img src="Pi_Web_GUI.png">
+
 Full instructions are in the included Tutorial PDF. 
 
 Create a folder on your Raspberry Pi called WebServer, then copy the files into this structure:
