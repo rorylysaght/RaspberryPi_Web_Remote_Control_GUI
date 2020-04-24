@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>GPIO Control</title>
+      <link rel="stylesheet" href='/static/style.css'/>
+	<style>
+{% for i in range(pins|length): %}
+th.P{{ pins[i] }} {
+  background-color: {{ colors[i] }} ;
+}
+{% endfor %}
+</style>
+</head>
+<body>
+<h1>Raspberry Pi 4 GPIO Web GUI Control</h1>
+
+<h3>Current GPIO Status</h3>
+<p>{% print(pinStatus) %}</p>
+
+<table border=1>
+<tr>
+{% for x, y in pinStatus.items(): %}
+<th class="{{ x }}">{{ x }}</th>
+{% endfor %}
+</tr>
+
+<tr>
+{% for x, y in pinStatus.items(): %}
+<td>
+{% if y == 1: %}
+<a href="/{{ x }}/off" class="btn btnOn">On</a>
+{% else %}
+<a href="/{{ x }}/on" class="btn">Off</a>
+{% endif %}
+</td>
+{% endfor %}
+</tr>
+
+<tr>
+  <td colspan="2"><a href="/P99/all_on" class="btn dbl"> All ON </a></td>
+  <td colspan="2"><a href="/P99/all_off" class="btn dbl"> All OFF </a></td>
+  <td colspan="2"><a href="/P99/seq" class="btn dbl">Sequence</a></td>
+  <td colspan="2"><a href="/P99/rev_seq" class="btn dbl">Rev Seq</a></td>
+</tr>
+<tr>
+  <td colspan="2"><a href="/Pred/find_colors" class="btn dbl"> All RED </a></td>
+  <td colspan="2"><a href="/Pgreen/find_colors" class="btn dbl">All GREEN</a></td>
+  <td colspan="2"><a href="/Pblue/find_colors" class="btn dbl"> All BLUE </a></td>
+  <td colspan="2"><a href="/Porange/find_colors" class="btn dbl">All Orange</a></td>
+</tr>
+<tr>
+  <td colspan="3">Random Flash:</td>
+  <td colspan="5">
+    <a href="/P10/rand_flash" class="btn">10 Sec</a>
+    <a href="/P15/rand_flash" class="btn">15 Sec</a>
+    <a href="/P20/rand_flash" class="btn">20 Sec</a>
+  </td>
+</tr>
+</table>
+
+
+</body>
+</html>
